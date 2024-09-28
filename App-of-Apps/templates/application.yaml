@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://github.com/rjsdn9025/app-of-apps"  # 레포지토리 URL 하드코딩
+    repoURL: "https://github.com/rjsdn9025/app-of-apps.git"  # 레포지토리 URL 하드코딩
     targetRevision: "HEAD"  # revision 하드코딩
     path: {{ $app }}  # 각 애플리케이션의 경로
   destination:
@@ -18,5 +18,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
 ---
 {{- end }}
