@@ -7,7 +7,7 @@ deployment:
 
 image:
   repository: 503561434440.dkr.ecr.ap-northeast-2.amazonaws.com/netflix-frontend
-  tag: e8245b26
+  tag: 0d463568
 
 service:
   name: frontend-service

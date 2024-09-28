@@ -1,4 +1,4 @@
-appName: "backend"
+appName: "backend-app"
 
 replicaCount: 1
 
