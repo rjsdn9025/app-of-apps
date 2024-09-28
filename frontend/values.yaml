@@ -1,8 +1,8 @@
 app:
-  name: front
+  name: frontend
 
 deployment:
-  name: front-deployment
+  name: frontend-deployment
   revisionHistoryLimit: 1
 
 image:
@@ -10,10 +10,10 @@ image:
   tag: e8245b26
 
 service:
-  name: front-service
+  name: frontend-service
 
 ingress:
-  name: front-ingress
+  name: frontend-ingress
 
 alb:
   loadBalancerName: geonwoo-alb
