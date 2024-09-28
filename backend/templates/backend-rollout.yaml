@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ .Values.appName }}-canary  # backend-deployment
+  name: {{ .Values.appName }}  # backend-deployment
 spec:
   replicas: {{ .Values.replicaCount }}  # 1 replicas
   revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit | default 1 }}  # 기본값으로 1 설정
@@ -15,7 +15,7 @@ spec:
       trafficRouting:
         istio:
           virtualService:
-            name: frontend-backend-routing.istio-ingress.svc.cluster.local  # VirtualService 이름
+            name: frontend-backend-routing.istio-ingress.svc.cluster.local # VirtualService 이름
             routes:
             - backend-route  # VirtualService 내의 경로
       steps:
