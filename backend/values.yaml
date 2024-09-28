@@ -1,10 +1,10 @@
-appName: "backend-app"
+appName: "backend"
 
 replicaCount: 1
 
 image:
   repository: 503561434440.dkr.ecr.ap-northeast-2.amazonaws.com/netflix-back
-  tag: "9b84277a"
+  tag: "477c6260"
   pullPolicy: Always
 
 service:
