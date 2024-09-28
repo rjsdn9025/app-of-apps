@@ -4,7 +4,7 @@ replicaCount: 4
 
 image:
   repository: 503561434440.dkr.ecr.ap-northeast-2.amazonaws.com/netflix-back
-  tag: "477c6260"
+  tag: "a91fed7c"
   pullPolicy: Always
 
 service:
