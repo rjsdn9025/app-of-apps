@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ .Values.appName }}-deployment  # backend-deployment
+  name: {{ .Values.appName }}-canary  # backend-deployment
 spec:
   replicas: {{ .Values.replicaCount }}  # 1 replicas
   revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit | default 1 }}  # 기본값으로 1 설정
