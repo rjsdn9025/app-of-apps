@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ .Values.appName }}-deployment  # backend-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}  # 1 replicas
+  revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit | default 1 }}  # 기본값으로 1 설정
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}  # backend
+  strategy:
+    canary:
+      canaryService: {{ .Values.appName }}-canary  # Canary 서비스
+      stableService: {{ .Values.appName }}-stable  # Stable 서비스
+      trafficRouting:
+        istio:
+          virtualService:
+            name: frontend-backend-routing  # VirtualService 이름
+            routes:
+            - backend-route  # VirtualService 내의 경로
+      steps:
+      - setWeight: 20
+      - pause:
+          duration: 10m  # 10분 동안 일시 정지
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}  # backend
+        version: canary  # Canary 버전 구분 라벨 추가
+    spec:
+      containers:
+      - name: nginx
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy | default "Always" }}  # 기본값 Always
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB_HOST
+          value: {{ .Values.env.DB_HOST }}
+        - name: DB_USER
+          value: {{ .Values.env.DB_USER }}
+        - name: DB_PASSWORD
+          value: {{ .Values.env.DB_PASSWORD }}
+        - name: DB_NAME
+          value: {{ .Values.env.DB_NAME }}
+        - name: AWS_REGION
+          value: {{ .Values.env.AWS_REGION }}
+        - name: COGNITO_CLIENT_ID
+          value: {{ .Values.env.COGNITO_CLIENT_ID }}
+        - name: COGNITO_USER_POOL_ID
+          value: {{ .Values.env.COGNITO_USER_POOL_ID }}
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"

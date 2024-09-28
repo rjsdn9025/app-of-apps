@@ -7,6 +7,7 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}
+      version: stable
   template:
     metadata:
       labels:
