@@ -29,3 +29,18 @@ spec:
       protocol: TCP
   selector:
     app: {{ .Values.appName }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.appName }}  # Canary 서비스 이름
+  labels:
+    app: {{ .Values.appName }}
+spec:
+  type: NodePort
+  ports:
+    - port: 5000
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    app: {{ .Values.appName }}

@@ -1,37 +1,35 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: {{ .Values.appName }}-stable
-# spec:
-#   replicas: {{ .Values.replicaCount }}
-#   selector:
-#     matchLabels:
-#       app: {{ .Values.appName }}
-#       version: stable
-#   template:
-#     metadata:
-#       labels:
-#         app: {{ .Values.appName }}
-#         version: stable
-#     spec:
-#       containers:
-#       - name: backend
-#         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-#         imagePullPolicy: {{ .Values.image.pullPolicy }}
-#         ports:
-#         - containerPort: {{ .Values.service.port }}
-#         env:
-#         - name: DB_HOST
-#           value: {{ .Values.env.DB_HOST }}
-#         - name: DB_USER
-#           value: {{ .Values.env.DB_USER }}
-#         - name: DB_PASSWORD
-#           value: {{ .Values.env.DB_PASSWORD }}
-#         - name: DB_NAME
-#           value: {{ .Values.env.DB_NAME }}
-#         - name: AWS_REGION
-#           value: {{ .Values.env.AWS_REGION }}
-#         - name: COGNITO_CLIENT_ID
-#           value: {{ .Values.env.COGNITO_CLIENT_ID }}
-#         - name: COGNITO_USER_POOL_ID
-#           value: {{ .Values.env.COGNITO_USER_POOL_ID }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+    spec:
+      containers:
+      - name: backend
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        env:
+        - name: DB_HOST
+          value: {{ .Values.env.DB_HOST }}
+        - name: DB_USER
+          value: {{ .Values.env.DB_USER }}
+        - name: DB_PASSWORD
+          value: {{ .Values.env.DB_PASSWORD }}
+        - name: DB_NAME
+          value: {{ .Values.env.DB_NAME }}
+        - name: AWS_REGION
+          value: {{ .Values.env.AWS_REGION }}
+        - name: COGNITO_CLIENT_ID
+          value: {{ .Values.env.COGNITO_CLIENT_ID }}
+        - name: COGNITO_USER_POOL_ID
+          value: {{ .Values.env.COGNITO_USER_POOL_ID }}
