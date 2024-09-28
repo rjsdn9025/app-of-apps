@@ -12,7 +12,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.appName }}
-        version: stableg
+        version: stable
     spec:
       containers:
       - name: backend
