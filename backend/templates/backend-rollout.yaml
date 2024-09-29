@@ -34,6 +34,27 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy | default "Always" }}  # 기본값 Always
         ports:
         - containerPort: 80
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 4
+          periodSeconds: 10
+          failureThreshold: 3
+          timeoutSeconds: 3
+        readinessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 4
+          periodSeconds: 10
+          failureThreshold: 6
+          timeoutSeconds: 3
+        startupProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 2
+          periodSeconds: 3
+          failureThreshold: 10
+          timeoutSeconds: 1
         env:
         - name: DB_HOST
           value: {{ .Values.env.DB_HOST }}
