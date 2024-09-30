@@ -88,7 +88,7 @@ spec:
   revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit | default 1 }}  # 기본값으로 1 설정
   selector:
     matchLabels:
-      app: {{ .Values.appName }}  # backend
+      app: {{ .Values.appName }}1  # backend
   strategy:
     canary:
       trafficRouting:
@@ -108,7 +108,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}  # Canary 버전 구분 라벨 추가
+        app: {{ .Values.appName }}1  # Canary 버전 구분 라벨 추가
     spec:
       containers:
       - name: nginx
