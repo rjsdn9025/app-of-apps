@@ -39,7 +39,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 5000
+    - name: tcp
+      port: 5000
       targetPort: 5000
       protocol: TCP
   selector:
