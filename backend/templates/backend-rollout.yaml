@@ -102,14 +102,13 @@ spec:
             canarySubsetName: canary  # required
             stableSubsetName: stable  # required
       steps:
-      - setWeight: 50
+      - setWeight: 20
       - pause:
           duration: 100m  # 10분 동안 일시 정지
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}  # backend
-        version: stable  # Canary 버전 구분 라벨 추가
+        app: {{ .Values.appName }}1  # Canary 버전 구분 라벨 추가
     spec:
       containers:
       - name: nginx
