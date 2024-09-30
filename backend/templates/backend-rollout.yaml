@@ -98,7 +98,7 @@ spec:
             routes:
             - backend-route  # VirtualService 내의 경로
           destinationRule:
-            name: rollout-destrule    # required
+            name: rollout-destrule.istio-ingress.svc.cluster.local    # required
             canarySubsetName: canary  # required
             stableSubsetName: stable  # required
       steps:
