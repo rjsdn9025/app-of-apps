@@ -19,9 +19,9 @@ spec:
             routes:
             - backend-route  # VirtualService 내의 경로
       steps:
-      - setWeight: 20
+      - setWeight: 50
       - pause:
-          duration: 10m  # 10분 동안 일시 정지
+          duration: 100m  # 10분 동안 일시 정지
   template:
     metadata:
       labels:
