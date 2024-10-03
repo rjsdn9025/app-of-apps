@@ -94,7 +94,7 @@ spec:
       trafficRouting:
         istio:
           virtualService:
-            name: frontend-backend-routing.istio-ingress.svc.cluster.local # VirtualService 이름
+            name: frontend-backend-routing.istio-system.svc.cluster.local # VirtualService 이름
             routes:
             - backend-route  # VirtualService 내의 경로
           destinationRule:
