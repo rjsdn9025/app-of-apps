@@ -110,16 +110,6 @@ spec:
       labels:
         app: {{ .Values.appName }}  
         version: stable # Canary 버전 구분 라벨 추가
-    spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: "karpenter.sh/provisioner-name"
-              operator: In
-              values:
-              - default
       containers:
       - name: nginx
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
