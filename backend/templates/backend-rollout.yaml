@@ -109,7 +109,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.appName }}  
-        # version: stable # Canary 버전 구분 라벨 추가
+        version: stable # Canary 버전 구분 라벨 추가
     spec:
       containers:
       - name: nginx
