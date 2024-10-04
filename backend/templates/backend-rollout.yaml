@@ -108,8 +108,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}  
-        version: stable # Canary 버전 구분 라벨 추가
+        app: {{ .Values.appName }} 
     spec:
       containers:
       - name: nginx
