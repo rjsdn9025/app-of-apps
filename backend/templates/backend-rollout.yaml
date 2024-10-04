@@ -120,11 +120,6 @@ spec:
               operator: In
               values:
               - default
-      tolerations:
-      - key: "karpenter.sh/provisioned"
-        operator: "Equal"
-        value: "true"
-        effect: "NoSchedule"
       containers:
       - name: nginx
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
@@ -174,13 +169,3 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
-
-spec:
-  tolerations:
-  - key: "example-taint"
-    operator: "Exists"
-    effect: "NoSchedule"
-taints:
-  - key: "karpenter.sh/provisioned"
-    value: "true"
-    effect: "NoSchedule"
