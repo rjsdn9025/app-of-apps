@@ -12,7 +12,7 @@ service:
   targetPort: 5000
 
 env:
-  DB_HOST: "database-1.chcokcyoscd7.ap-northeast-2.rds.amazonaws.com"
+  DB_HOST: "prod-db-instance.chcokcyoscd7.ap-northeast-2.rds.amazonaws.com"
   DB_USER: "admin"
   DB_PASSWORD: "kmhyuk8832!"
   DB_NAME: "test"
