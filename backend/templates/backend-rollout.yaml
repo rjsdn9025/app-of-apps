@@ -82,7 +82,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ .Values.appName }}-stable  # backend-deployment
+  name: {{ .Values.appName }}-canary  # backend-deployment
 spec:
   replicas: {{ .Values.replicaCount }}  # 1 replicas
   revisionHistoryLimit: {{ .Values.deployment.revisionHistoryLimit | default 1 }}  # 기본값으로 1 설정
@@ -109,7 +109,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.appName }}
-        version: stable # Canary 버전 구분 라벨 추가
+        version: canary # Canary 버전 구분 라벨 추가
     spec:
       containers:
       - name: nginx
